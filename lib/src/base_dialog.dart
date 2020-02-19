@@ -33,26 +33,27 @@ enum EntryAnimation {
 }
 
 class BaseGiffyDialog extends StatefulWidget {
-  BaseGiffyDialog({
-    Key key,
-    @required this.imageWidget,
-    @required this.title,
-    @required this.onOkButtonPressed,
-    @required this.description,
-    @required this.onlyOkButton,
-    @required this.onlyCancelButton,
-    @required this.buttonOkText,
-    @required this.buttonCancelText,
-    @required this.buttonOkColor,
-    @required this.buttonCancelColor,
-    @required this.cornerRadius,
-    @required this.buttonRadius,
-    @required this.entryAnimation,
-    @required this.onCancelButtonPressed,
-  }) : super(key: key);
+  BaseGiffyDialog(
+      {Key key,
+      @required this.imageWidget,
+      @required this.title,
+      @required this.onOkButtonPressed,
+      @required this.description,
+      @required this.onlyOkButton,
+      @required this.onlyCancelButton,
+      @required this.buttonOkText,
+      @required this.buttonCancelText,
+      @required this.buttonOkColor,
+      @required this.buttonCancelColor,
+      @required this.cornerRadius,
+      @required this.buttonRadius,
+      @required this.entryAnimation,
+      @required this.onCancelButtonPressed,
+      this.imageSize})
+      : super(key: key);
 
   final Widget imageWidget;
-  final Text title;
+  final Widget title;
   final Widget description;
   final bool onlyOkButton;
   final bool onlyCancelButton;
@@ -65,6 +66,7 @@ class BaseGiffyDialog extends StatefulWidget {
   final VoidCallback onOkButtonPressed;
   final VoidCallback onCancelButtonPressed;
   final EntryAnimation entryAnimation;
+  final double imageSize;
 
   @override
   _BaseGiffyDialogState createState() => _BaseGiffyDialogState();
@@ -127,10 +129,12 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
   }
 
   Widget _buildPortraitWidget(BuildContext context, Widget imageWidget) {
+    double imgSize = widget?.imageSize ?? 300;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Expanded(
+        SizedBox(
+          height: imgSize,
           child: ClipRRect(
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(widget.cornerRadius),

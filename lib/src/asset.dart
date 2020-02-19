@@ -40,6 +40,7 @@ class AssetGiffyDialog extends StatelessWidget {
     this.cornerRadius = 8.0,
     this.buttonRadius = 8.0,
     this.entryAnimation = EntryAnimation.DEFAULT,
+    this.imageSize,
   })  : assert(image != null),
         assert(title != null),
         super(key: key);
@@ -52,7 +53,7 @@ class AssetGiffyDialog extends StatelessWidget {
   final Image image;
 
   /// Title text.
-  final Text title;
+  final Widget title;
 
   /// Description text.
   final Widget description;
@@ -116,6 +117,8 @@ class AssetGiffyDialog extends StatelessWidget {
   /// entrance animation, i.e. slow fade-in in the center of the screen.
   final EntryAnimation entryAnimation;
 
+  final double imageSize;
+
   @override
   Widget build(BuildContext context) {
     return BaseGiffyDialog(
@@ -133,6 +136,7 @@ class AssetGiffyDialog extends StatelessWidget {
       onCancelButtonPressed: onCancelButtonPressed,
       buttonOkText: buttonOkText,
       entryAnimation: entryAnimation,
+      imageSize: imageSize,
     );
   }
 }
