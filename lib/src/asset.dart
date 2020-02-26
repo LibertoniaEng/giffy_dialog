@@ -41,6 +41,7 @@ class AssetGiffyDialog extends StatelessWidget {
     this.buttonRadius = 8.0,
     this.entryAnimation = EntryAnimation.DEFAULT,
     this.imageSize,
+    this.subWidget,
   })  : assert(image != null),
         assert(title != null),
         super(key: key);
@@ -119,6 +120,8 @@ class AssetGiffyDialog extends StatelessWidget {
 
   final double imageSize;
 
+  final Widget subWidget;
+
   @override
   Widget build(BuildContext context) {
     return BaseGiffyDialog(
@@ -137,6 +140,7 @@ class AssetGiffyDialog extends StatelessWidget {
       buttonOkText: buttonOkText,
       entryAnimation: entryAnimation,
       imageSize: imageSize,
+      subWidget: subWidget,
     );
   }
 }

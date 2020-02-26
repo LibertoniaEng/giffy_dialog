@@ -49,6 +49,7 @@ class BaseGiffyDialog extends StatefulWidget {
       @required this.buttonRadius,
       @required this.entryAnimation,
       @required this.onCancelButtonPressed,
+      this.subWidget,
       this.imageSize})
       : super(key: key);
 
@@ -67,6 +68,7 @@ class BaseGiffyDialog extends StatefulWidget {
   final VoidCallback onCancelButtonPressed;
   final EntryAnimation entryAnimation;
   final double imageSize;
+  final Widget subWidget;
 
   @override
   _BaseGiffyDialogState createState() => _BaseGiffyDialogState();
@@ -154,7 +156,12 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
                 padding: const EdgeInsets.all(8.0),
                 child: widget.description,
               ),
-              _buildButtonsBar(context)
+              _buildButtonsBar(context),
+              if (widget.subWidget != null)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: widget.subWidget,
+                )
             ],
           ),
         ),
